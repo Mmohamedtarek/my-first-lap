@@ -1,0 +1,115 @@
+# lab2
+
+
+   . push the changes from the main branch to your fork
+   . create a pull request from your fork to the original repo
+   . open the PR list in the original repo: https://github.com/courselabs/dev/pulls
+   . can you see why PRs are useful?
+
+
+
+## steps 
+
+
+### step 1 : creat a new fork and remote it 
+
+$ git remote add fork https://github.com/Mmohamedtarek/dev
+
+
+### step 2 : pull all files 
+
+$ git pull fork main --rebase
+remote: Enumerating objects: 604, done.
+remote: Counting objects: 100% (91/91), done.
+remote: Compressing objects: 100% (46/46), done.
+remote: Total 604 (delta 44), reused 81 (delta 40), pack-reused 513 (from 1)
+Receiving objects: 100% (604/604), 5.77 MiB | 2.48 MiB/s, done.
+Resolving deltas: 100% (234/234), done.
+From https://github.com/Mmohamedtarek/dev
+ * branch            main       -> FETCH_HEAD
+ * [new branch]      main       -> fork/main
+Successfully rebased and updated refs/heads/main.
+
+
+### step 3 : create a new branch 
+
+$ git checkout -b feature/new-branch 
+Switched to a new branch 'feature/new-branch'
+$ git branch 
+* feature/new-branch
+  main
+  master
+
+
+### step 4 : Make some changes to the repo - add or delete files, edit text, remove whole folders - and then commit them:
+
+
+$ touch readme.txt
+$ echo "hello all" >> readme.txt
+$ git status
+On branch feature/new-branch
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	readme.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+$ git add readme.txt
+$ git commit -m "Add readme.txt"
+[feature/new-branch caab6c5] Add readme.txt
+ 1 file changed, 1 insertion(+)
+ create mode 100644 readme.txt
+
+
+### step 5 : puch changes 
+
+
+$ git push fork feature/new-branch
+Username for 'https://github.com': Mmohamedtarek
+Password for 'https://Mmohamedtarek@github.com': 
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 289 bytes | 289.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote: 
+remote: Create a pull request for 'feature/new-branch' on GitHub by visiting:
+remote:      https://github.com/Mmohamedtarek/dev/pull/new/feature/new-branch
+remote: 
+To https://github.com/Mmohamedtarek/dev
+ * [new branch]      feature/new-branch -> feature/new-branch
+
+
+### step 6 : marging
+
+$ git checkout main
+Switched to branch 'main'
+$ git merge feature/new-branch
+Updating 99e0cb0..caab6c5
+Fast-forward
+ readme.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 readme.txt
+
+
+### can you see why PRs are useful?
+
+Yes, Pull Requests (PRs) are extremely useful, especially in collaborative development environments. Here's why:
+1. Code Review and Quality Assurance:
+
+    PRs allow team members to review each other's code before it gets merged into the main codebase. This helps catch bugs, improve code quality, and ensure that new code follows best practices.
+
+    Feedback: Developers can suggest improvements, point out issues, or confirm that the changes look good before merging them.
+
+2. Version Control:
+
+    PRs help track the history of changes made to a project. Each PR is associated with a specific feature, bug fix, or improvement, making it easy to see who did what and when.
+
+    You can also see diffs between the existing code and what’s being changed, helping you understand exactly what has been added, removed, or modified.
+
+3. Collaboration and Communication:
+
+    PRs provide a way to discuss changes before they become part of the main codebase. Team members can leave comments, ask for clarification, and collaborate on how to improve the code.
+
+    Context: Each PR can have a description of the purpose, reasoning behind the changes, and additional context, making it easier to understand why certain decisions were made.
